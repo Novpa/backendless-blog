@@ -1,9 +1,35 @@
+import { Link } from "react-router-dom";
+import { FaArrowRightLong } from "react-icons/fa6";
+
 function Landing() {
   return (
-    <div>
-      <h1>Welcome do Loggy</h1>
-      <button>Get Started</button>
-    </div>
+    <main className="px-30 pt-30">
+      <div className="">
+        <div className="text-6xl font-semibold py-5">
+          <h1 className="py-2">Welcome do Loggy</h1>
+          <h2 className="py-2">Pour your Logs</h2>
+        </div>
+
+        <div className="w-[50%] text-stone-400 pb-8">
+          <p>
+            The place where people{" "}
+            <strong className="text-stone-300">bloggy</strong>, share their{" "}
+            <strong className="text-stone-300">loggy</strong>, and occasionally
+            embrace the <strong className="text-stone-300">buggy</strong>. A
+            minimalist SPA for developers and thinkers who know that code isn't
+            always perfect, but stories should be. ≈
+          </p>
+        </div>
+        <Link
+          className="text-indigo-400 flex items-center gap-3 hover:text-white transition-all duration-300"
+          to="admin/dashboard">
+          <p>Create your first Log </p>
+          <span>
+            <FaArrowRightLong />
+          </span>
+        </Link>
+      </div>
+    </main>
   );
 }
 

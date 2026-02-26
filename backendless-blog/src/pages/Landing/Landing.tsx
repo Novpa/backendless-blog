@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { FaArrowRightLong } from "react-icons/fa6";
+import ButtonCta from "../../ui/ButtonCta";
 
 function Landing() {
   return (
@@ -12,22 +13,15 @@ function Landing() {
 
         <div className="w-[50%] text-stone-400 pb-8">
           <p>
-            The place where people{" "}
+            ≈ The place where people{" "}
             <strong className="text-stone-300">bloggy</strong>, share their{" "}
             <strong className="text-stone-300">loggy</strong>, and occasionally
             embrace the <strong className="text-stone-300">buggy</strong>. A
             minimalist SPA for developers and thinkers who know that code isn't
-            always perfect, but stories should be. ≈
+            always perfect, but stories should be ≈
           </p>
         </div>
-        <Link
-          className="text-indigo-400 flex items-center gap-3 hover:text-white transition-all duration-300"
-          to="admin/dashboard">
-          <p>Create your first Log </p>
-          <span>
-            <FaArrowRightLong />
-          </span>
-        </Link>
+        <ButtonCta to="admin/dashboard">Create your first Log</ButtonCta>
       </div>
     </main>
   );

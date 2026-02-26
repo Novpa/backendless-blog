@@ -1,35 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import AppLayout from "./ui/AppLayout";
+import CreateBlogPage from "./pages/adminDashboard/CreateBlogPage";
+import BlogFeeds from "./pages/blogFeeds/BlogFeeds";
+import BlogFeedsDetails, {
+  updateBlogAction,
+} from "./pages/blogFeedsDetails/BlogFeedsDetails";
+import Landing from "./pages/Landing/Landing";
+import { fetchBlogData as BlogDataLoader } from "./pages/blogFeeds/BlogFeeds";
+import { fetchBlogDetailsById as BlogDetailsLoader } from "./pages/blogFeedsDetails/BlogFeedsDetails";
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    Component: AppLayout,
+    children: [
+      {
+        index: true,
+        Component: Landing,
+      },
+      {
+        path: "admin/dashboard",
+        Component: CreateBlogPage,
+      },
+      {
+        path: "feeds",
+        Component: BlogFeeds,
+        loader: BlogDataLoader,
+      },
+      {
+        path: "feeds/:id",
+        Component: BlogFeedsDetails,
+        loader: BlogDetailsLoader,
+        action: updateBlogAction,
+      },
+    ],
+  },
+]);
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <RouterProvider router={router} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

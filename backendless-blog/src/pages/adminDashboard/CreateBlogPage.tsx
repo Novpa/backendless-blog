@@ -6,9 +6,11 @@ import { useState } from "react";
 import CofirmationModal from "../../ui/CofirmationModal";
 import Button from "../../ui/Button";
 import FormErrorMessage from "../../ui/FormErrorMessage";
+import { useNavigate } from "react-router-dom";
 
 function CreateBlogPage() {
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
 
   //handle show modal
   const handleShowModal = () => {
@@ -20,6 +22,8 @@ function CreateBlogPage() {
     try {
       const response = await Backendless.Data.of("Posts").save(values);
       console.log(response);
+      setShowModal(false);
+      navigate("/feeds");
     } catch (error) {
       console.log(error);
     }
@@ -53,12 +57,6 @@ function CreateBlogPage() {
     formik.values.content !== "";
 
   const isError = isWrongInput || !isNotEmpty;
-
-  console.log("formik.errors.title", formik.errors.title);
-  console.log("isWrongInput", isWrongInput);
-  console.log("isNotEmpty", isNotEmpty);
-  console.log("isError", isError);
-
   return (
     <main className="pt-12 h-dvh">
       <div>

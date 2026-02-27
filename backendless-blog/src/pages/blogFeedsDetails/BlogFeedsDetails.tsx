@@ -14,6 +14,7 @@ import { formatTimestamp } from "../../utils/helperFunction";
 import Button from "../../ui/Button";
 import BackButton from "../../ui/BackButton";
 import FormErrorMessage from "../../ui/FormErrorMessage";
+import { toast } from "react-toastify";
 
 function BlogFeedsDetails() {
   const [isEditing, setIsEditing] = useState(false);
@@ -64,9 +65,11 @@ function BlogFeedsDetails() {
       //   console.log("updated data -->", response);
       setIsEditing(false);
       setShowModalEdit(false);
+      toast.success("Log Updated Successfully.");
       if (response) navigate(`/feeds/${id}`);
     } catch (error) {
       console.log(error);
+      toast.error("There's something wrong!");
       return error;
     }
   };
@@ -94,7 +97,7 @@ function BlogFeedsDetails() {
       <BackButton>Previous Page</BackButton>
       <div>
         <div className="block md:flex md:justify-between items-center">
-          <h1 className="text-3xl lg:text-5xl py-5 md:py-5">
+          <h1 className="text-3xl lg:text-5xl py-5 md:py-5 w-full md:w-[70%]">
             {postDetails.title}
           </h1>
           <div className="flex gap-5">

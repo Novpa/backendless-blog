@@ -12,3 +12,7 @@
     @apply bg-black text-white;
   }
 }
+
+.Toastify__progress-bar--success {
+  background: #6366f1;
+}

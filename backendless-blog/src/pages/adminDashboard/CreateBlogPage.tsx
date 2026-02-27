@@ -7,6 +7,7 @@ import CofirmationModal from "../../ui/CofirmationModal";
 import Button from "../../ui/Button";
 import FormErrorMessage from "../../ui/FormErrorMessage";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function CreateBlogPage() {
   const [showModal, setShowModal] = useState(false);
@@ -20,12 +21,15 @@ function CreateBlogPage() {
   //handle submit
   const handleSubmitBlog = async (values: CreateBlogType) => {
     try {
-      const response = await Backendless.Data.of("Posts").save(values);
+      const response: any = await Backendless.Data.of("Posts").save(values);
       console.log(response);
       setShowModal(false);
-      navigate("/feeds");
+      toast.success("Congratulations, Your Log Successfully Made.");
+      navigate(`/feeds/${response.objectId}`);
+      // navigate("/feeds");
     } catch (error) {
       console.log(error);
+      toast.error("There's something wrong!");
     }
   };
 

@@ -2,14 +2,14 @@ import ButtonCta from "../../ui/ButtonCta";
 
 function Landing() {
   return (
-    <main className="px-30 pt-30">
+    <main className="px-10 sm:px-15 md:px-20 lg:px-30 pt-30">
       <div>
-        <div className="text-6xl  font-semibold py-5">
+        <div className="text-4xl sm:text-5xl md:text-6xl font-semibold py-5">
           <h1 className="py-2 flex">Welcome do Loggy</h1>
           <h2 className="py-2 bg-linear-to-r flex">Pour your Logs</h2>
         </div>
 
-        <div className="w-[50%] text-stone-400 pb-8">
+        <div className="w-full lg:w-[50%] font-light sm:font-medium text-stone-400 pb-8">
           <p>
             ≈ The place where people{" "}
             <strong className="text-stone-300">bloggy</strong>, share their{" "}

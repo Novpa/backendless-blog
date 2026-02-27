@@ -14,7 +14,7 @@ function Navbar() {
           </div>
         </NavLink>
       </div>
-      <div className="flex gap-2 sm:gap-5 text-normal">
+      <div className="flex gap-5 text-normal">
         <NavLink
           to="feeds"
           className={({ isActive }) => (isActive ? "text-indigo-400" : "")}>

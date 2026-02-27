@@ -14,7 +14,7 @@ function CofirmationModal({
   children,
 }: ConfirmationModal) {
   return (
-    <section className="absolute top-0 w-full left-0 h-full flex items-center justify-center bg-white/10 backdrop-blur-xs">
+    <section className="absolute top-0 z-100 w-full left-0 h-full flex items-center justify-center bg-white/10 backdrop-blur-xs">
       <div className="px-10 py-10 bg-black rounded-2xl w-[50%] h-50">
         <p className="flex items-center justify-center">{children}</p>
         <div className="flex items-center justify-center gap-5 pt-8">

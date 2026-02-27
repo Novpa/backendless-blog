@@ -10,6 +10,9 @@ import { useFormik } from "formik";
 import type { CreateBlogType } from "../../interfaces/createBlogPage";
 import { useState } from "react";
 import CofirmationModal from "../../ui/CofirmationModal";
+import { formatTimestamp } from "../../utils/helperFunction";
+import Button from "../../ui/Button";
+import BackButton from "../../ui/BackButton";
 
 function BlogFeedsDetails() {
   const [isEditing, setIsEditing] = useState(false);
@@ -86,15 +89,26 @@ function BlogFeedsDetails() {
   });
 
   return (
-    <section className="py-30">
+    <section className="py-30 px-10 sm:px-20 md:px-30">
+      <BackButton>Back to Feeds</BackButton>
       <div>
-        <h1>Blog feeds details</h1>
-        <button onClick={handleIsEditing} className="border cursor-pointer">
-          Edit
-        </button>
-        <button onClick={handleDeleteModal} className="border cursor-pointer">
-          Delete Post
-        </button>
+        <div className="block md:flex md:justify-between items-center">
+          <h1 className="text-3xl lg:text-5xl py-5 md:py-5">
+            {postDetails.title}
+          </h1>
+          <div className="flex gap-5">
+            <Button type="button" onClick={handleIsEditing}>
+              Edit
+            </Button>
+            <Button onClick={handleDeleteModal} type="button" style="secondary">
+              Delete Post
+            </Button>
+          </div>
+        </div>
+        <div className="flex gap-5 text-xs sm:text-sm py-4 text-stone-400 font-light">
+          <p>⦿ {postDetails.author}</p>
+          <p>{formatTimestamp(postDetails.created, postDetails.updated)}</p>
+        </div>
 
         {showModalDelete && (
           <CofirmationModal
@@ -105,9 +119,7 @@ function BlogFeedsDetails() {
         )}
       </div>
 
-      <section>
-        <h1>{postDetails.title}</h1>
-        <p>{postDetails.author}</p>
+      <section className="py-8 ">
         <p>{postDetails.content}</p>
       </section>
 

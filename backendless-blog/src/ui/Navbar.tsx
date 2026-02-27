@@ -4,7 +4,7 @@ import { BsCrop } from "react-icons/bs";
 function Navbar() {
   return (
     <nav
-      className="fixed border-b border-stone-800 bg-black w-full top-0 left-0 flex justify-between px-10 h-17 items-center
+      className="fixed border-b border-stone-800 bg-black w-full top-0 left-0 flex justify-between px-8 sm:px-10 h-17 items-center
     ">
       <div>
         <NavLink to="/">

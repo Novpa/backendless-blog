@@ -86,7 +86,7 @@ function BlogFeedsDetails() {
   });
 
   return (
-    <div>
+    <section className="py-30">
       <div>
         <h1>Blog feeds details</h1>
         <button onClick={handleIsEditing} className="border cursor-pointer">
@@ -191,7 +191,7 @@ function BlogFeedsDetails() {
           </button>
         </>
       )}
-    </div>
+    </section>
   );
 }
 

@@ -48,10 +48,11 @@ function BlogFeedsDetails() {
       const response: any = await Backendless.Data.of("Posts").remove(`${id}`);
       console.log("delete res", response);
       //   if (!response.ok) throw new Error("Page not found");
-
+      toast.success("Log Deleted Successfully.");
       if (response) navigate("/feeds");
     } catch (error) {
       console.log(error);
+      toast.error("There's something wrong!");
     }
   };
 
